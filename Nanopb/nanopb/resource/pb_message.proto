@@ -1,0 +1,61 @@
+syntax = "proto3";
+option optimize_for = LITE_RUNTIME;
+
+enum DEVICE_WORK_STATE
+{
+    RUNNING = 0;
+    UPGRADE = 1;
+    UPGRADE_SUCCESS = 2;
+    UPGRADE_FAILED = 3;
+}
+
+message device_information
+{
+    uint32 device_type = 1;
+    string device_version = 2;
+    DEVICE_WORK_STATE device_state = 3;
+    string algorithm_version = 4;
+}
+
+message mqtt_server_configure
+{
+    bool domain_name_flag = 1;
+	string address = 2;
+	uint32 port = 3;
+	string username = 4;
+	string password = 5;
+}
+
+message device_upgrade
+{
+    string oad_address = 1;
+}
+
+message device_data
+{
+    string ble_mac = 1;
+    uint32 ble_packet_number = 2;
+    bool ble_charging_state = 3;
+    uint32 ble_battery_level = 4;
+    repeated float raw_temperature = 5 [packed = true];
+    repeated float algorithm_temperature = 6 [packed = true];
+    uint32 algorithm_state = 7;
+    uint32 algorithm_gesture = 8;
+    bool algorithm_predict_state = 9;
+    sint32 ble_rssi = 10;
+    sint32 wifi_rssi = 11;
+    string current_time = 12;
+}
+
+message ble_state
+{
+    string ble_mac = 1;
+    string ble_device_version = 2;
+    uint32 ble_device_type = 3;
+    bool ble_online_state = 4;
+}
+
+message device_state
+{
+    bool online_state = 1;
+}

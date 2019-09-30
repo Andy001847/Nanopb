@@ -1,0 +1,17 @@
+# Define device_information member memory size
+device_information.device_version       max_size:8
+device_information.algorithm_version    max_size:8
+
+# Define mqtt_server_configure member memory size
+mqtt_server_configure.username    max_size:128
+mqtt_server_configure.password    max_size:128
+
+#Define device_data member memory size
+device_data.ble_mac                  max_size:16
+device_data.raw_temperature          max_count:3
+device_data.algorithm_temperature    max_count:3
+device_data.current_time             max_size:32
+
+#Define ble_state member memory size
+ble_state.ble_mac               max_size:16
+ble_state.ble_device_version    max_size:8 
