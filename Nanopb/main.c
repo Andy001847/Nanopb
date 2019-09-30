@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 #include "pb_data_handle.h"
 #include "pb_message.pb.h"
 

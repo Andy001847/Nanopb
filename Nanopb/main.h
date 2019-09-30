@@ -6,11 +6,12 @@ extern "C" {
 #endif
 
 #include <stdio.h>
+#include <string.h>
 
 #define DEBUG
 
 #ifdef DEBUG
-#define Log(debug_level, format, ...)                                                                    \
+    #define Log(debug_level, format, ...)                                                                    \
 			do{                                                                                              \
 				switch(debug_level)                                                                          \
 				{                                                                                            \
@@ -29,7 +30,7 @@ extern "C" {
 				}                                                                                            \
 			}while(0)
 #else
-#define Log(DebugLevel, format, ...)
+    #define Log(DebugLevel, format, ...)
 #endif
 
 #define DEVICE_VERSION        "V1.0.0"
