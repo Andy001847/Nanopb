@@ -138,8 +138,8 @@
     <ClInclude Include="nanopb\resource\pb_message.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="nanopb\project\pb_message.options" />
-    <None Include="nanopb\project\pb_message.proto" />
+    <None Include="nanopb\resource\pb_message.options" />
+    <None Include="nanopb\resource\pb_message.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

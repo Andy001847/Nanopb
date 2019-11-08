@@ -2,7 +2,7 @@
 #include "pb_data_handle.h"
 #include "pb_message.pb.h"
 
-static void test_device_information(void)
+static void device_information_test(void)
 {
 	pb_byte_t pb_buffer[PB_BUFFER_SIZE] = { 0 };
 
@@ -33,10 +33,10 @@ static void test_device_information(void)
 	Log(1, "Device work state: %d.", unpack_info.device_state);
 	Log(1, "Device algorithm version: %s.", unpack_info.algorithm_version);
 
-	Log(1, ">>> pb_buffer size = %d, pack data length = %d.\n", strlen((const char*)pb_buffer), pack_length);
+	Log(1, ">>> pack data length = %d.\n", pack_length);
 }
 
-static void test_mqtt_server_configure(void)
+static void mqtt_server_configure_test(void)
 {
 	pb_byte_t pb_buffer[PB_BUFFER_SIZE] = { 0 };
 
@@ -68,16 +68,16 @@ static void test_mqtt_server_configure(void)
 		Log(1, "Unpack data failed.");
 	}
 
-	Log(1, "MQTT domain name type: %s.", unpack_config.domain_name_flag ? "true" : "false");
+	Log(1, "MQTT server address type: %s.", unpack_config.domain_name_flag ? "domain name" : "IP address");
 	Log(1, "MQTT server address: %s.", (char*)unpack_config.address.arg);
 	Log(1, "MQTT port: %d.", unpack_config.port);
 	Log(1, "MQTT username: %s.", unpack_config.username);
 	Log(1, "MQTT password: %s.", unpack_config.password);
 
-	Log(1, ">>> pb_buffer size = %d, pack data length = %d.\n", strlen((const char*)pb_buffer), pack_length);
+	Log(1, ">>> pack data length = %d.\n", pack_length);
 }
 
-static void test_device_upgrade(void)
+static void device_upgrade_test(void)
 {
 	pb_byte_t pb_buffer[PB_BUFFER_SIZE] = { 0 };
 
@@ -106,10 +106,10 @@ static void test_device_upgrade(void)
 
 	Log(1, "Upgrade address: %s.", (char*)unpack_upgrade_url.oad_address.arg);
 
-	Log(1, ">>> pb_buffer size = %d, pack data length = %d.\n", strlen((const char*)pb_buffer), pack_length);
+	Log(1, ">>> pack data length = %d.\n", pack_length);
 }
 
-static void test_device_data(void)
+static void device_data_test(void)
 {
 	pb_byte_t pb_buffer[PB_BUFFER_SIZE] = { 0 };
 
@@ -150,21 +150,21 @@ static void test_device_data(void)
 
 	Log(1, "BLE mac: %s.", unpack_data.ble_mac);
 	Log(1, "Packet number: %d.", unpack_data.ble_packet_number);
-	Log(1, "Charging state: %s.", unpack_data.algorithm_state ? "true" : "false");
+	Log(1, "Charging state: %s.", unpack_data.algorithm_state ? "charging" : "discharging");
 	Log(1, "Battery level: %d%%.", unpack_data.ble_battery_level);
 	Log(1, "Raw temperature: %5.2f¡æ, %5.2f¡æ, %5.2f¡æ.", unpack_data.raw_temperature[0], unpack_data.raw_temperature[1], unpack_data.raw_temperature[2]);
-	Log(1, "Alg temperature: %5.2f¡æ, %5.2f¡æ, %5.2f¡æ.", unpack_data.algorithm_temperature[0], unpack_data.algorithm_temperature[1], unpack_data.algorithm_temperature[2]);
-	Log(1, "Alg state: %d.", unpack_data.algorithm_state);
-	Log(1, "Alg gesture: %d.", unpack_data.algorithm_gesture);
-	Log(1, "Alg predict state: %s.", unpack_data.algorithm_predict_state ? "true" : "false");
+	Log(1, "Algorithm temperature: %5.2f¡æ, %5.2f¡æ, %5.2f¡æ.", unpack_data.algorithm_temperature[0], unpack_data.algorithm_temperature[1], unpack_data.algorithm_temperature[2]);
+	Log(1, "Algorithm state: %d.", unpack_data.algorithm_state);
+	Log(1, "Algorithm gesture: %d.", unpack_data.algorithm_gesture);
+	Log(1, "Algorithm predict state: %s.", unpack_data.algorithm_predict_state ? "success" : "failed");
 	Log(1, "BLE rssi: %d.", unpack_data.ble_rssi);
 	Log(1, "WiFi rssi: %d.", unpack_data.wifi_rssi);
 	Log(1, "Current time: %s.", unpack_data.current_time);
 
-	Log(1, ">>> pb_buffer size = %d, pack data length = %d.\n", strlen((const char*)pb_buffer), pack_length);
+	Log(1, ">>> pack data length = %d.\n", pack_length);
 }
 
-static void test_ble_state(void)
+static void ble_state_test(void)
 {
 	pb_byte_t pb_buffer[PB_BUFFER_SIZE] = { 0 };
 
@@ -193,12 +193,12 @@ static void test_ble_state(void)
 	Log(1, "BLE mac: %s.", unpack_state.ble_mac);
 	Log(1, "BLE device version: %s.", unpack_state.ble_device_version);
 	Log(1, "BLE device type: 0x%04X.", unpack_state.ble_device_type);
-	Log(1, "BLE device online state: %s.", unpack_state.ble_online_state ? "true" : "false");
+	Log(1, "BLE device online state: %s.", unpack_state.ble_online_state ? "online" : "offline");
 
-	Log(1, ">>> pb_buffer size = %d, pack data length = %d.\n", strlen((const char*)pb_buffer), pack_length);
+	Log(1, ">>> pack data length = %d.\n", pack_length);
 }
 
-static void test_device_state(void)
+static void device_state_test(void)
 {
 	pb_byte_t pb_buffer[PB_BUFFER_SIZE] = { 0 };
 
@@ -220,19 +220,19 @@ static void test_device_state(void)
 		Log(1, "Unpack data failed.");
 	}
 
-	Log(1, "Device state: %s.", unpack_device_state.online_state ? "true" : "false");
+	Log(1, "Device state: %s.", unpack_device_state.online_state ? "online" : "offline");
 
-	Log(1, ">>> pb_buffer size = %d, pack data length = %d.\n", strlen((const char*)pb_buffer), pack_length);
+	Log(1, ">>> pack data length = %d.\n", pack_length);
 }
 
 int main(void)
 {
-	test_device_information();
-	test_mqtt_server_configure();
-	test_device_upgrade();
-	test_device_data();
-	test_ble_state();
-	test_device_state();
+	device_information_test();
+	mqtt_server_configure_test();
+	device_upgrade_test();
+	device_data_test();
+	ble_state_test();
+	device_state_test();
 
 	return 0;
 }

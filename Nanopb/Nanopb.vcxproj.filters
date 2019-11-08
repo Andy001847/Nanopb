@@ -58,10 +58,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="nanopb\project\pb_message.options">
+    <None Include="nanopb\resource\pb_message.options">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="nanopb\project\pb_message.proto">
+    <None Include="nanopb\resource\pb_message.proto">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
